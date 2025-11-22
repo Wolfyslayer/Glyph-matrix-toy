@@ -1,6 +1,6 @@
 # Glyph Matrix Toy
 
-An Android app for Nothing Phone that displays real-time clock and battery status on the Glyph matrix interface using a pixelated retro style.
+An Android app for Nothing Phone 3 that displays real-time clock and battery status on the Glyph Matrix interface (16x32 display) using a pixelated retro style.
 
 ## Features
 
@@ -12,7 +12,7 @@ An Android app for Nothing Phone that displays real-time clock and battery statu
 
 ## Requirements
 
-- Nothing Phone (Phone 1 or Phone 2) with Glyph interface
+- Nothing Phone 3 with Glyph Matrix interface
 - Android SDK 31 (Android 12) or higher
 - Android Studio Hedgehog (2023.1.1) or newer
 - Kotlin 1.9.0+
@@ -198,7 +198,7 @@ Contributions are welcome! Please feel free to:
 ## Troubleshooting
 
 ### App won't install
-- Ensure you're using a Nothing Phone with Glyph interface
+- Ensure you're using a Nothing Phone 3 with Glyph Matrix interface
 - Check that "Install from Unknown Sources" is enabled
 - Verify USB debugging is enabled for ADB installation
 
@@ -228,4 +228,4 @@ For issues, questions, or suggestions, please open an issue on GitHub.
 
 ---
 
-**Note**: This app is designed specifically for Nothing Phone devices with Glyph interface. It will not function on other devices.
+**Note**: This app is designed specifically for Nothing Phone 3 with its Glyph Matrix interface (16x32 display). It will not function on Nothing Phone 1/2 (which have LED strip Glyph interfaces) or other devices.

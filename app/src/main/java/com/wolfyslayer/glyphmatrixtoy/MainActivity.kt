@@ -14,7 +14,7 @@ import java.util.*
 
 /**
  * Main activity for the Glyph Matrix Toy
- * Displays time and battery status on the Nothing Phone's Glyph matrix
+ * Displays time and battery status on the Nothing Phone 3's Glyph Matrix (16x32 display)
  */
 class MainActivity : AppCompatActivity() {
     
