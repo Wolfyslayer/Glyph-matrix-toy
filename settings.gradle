@@ -1,0 +1,2 @@
+rootProject.name = "GlyphMatrixToy"
+include ':app'
