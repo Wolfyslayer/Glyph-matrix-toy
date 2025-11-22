@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.nothing.ketchum.GlyphException
-import com.nothing.ketchum.GlyphFrame
 import com.nothing.ketchum.GlyphManager
 import com.wolfyslayer.glyphmatrixtoy.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat

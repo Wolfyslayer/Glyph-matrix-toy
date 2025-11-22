@@ -13,6 +13,7 @@ class MatrixRenderer {
         private const val TAG = "MatrixRenderer"
         const val MATRIX_WIDTH = 32
         const val MATRIX_HEIGHT = 16
+        private const val MAX_BRIGHTNESS = 4095  // Maximum brightness for Glyph SDK
         
         // 3x5 font for digits and characters
         private val FONT_3x5 = mapOf(
@@ -237,7 +238,7 @@ class MatrixRenderer {
         val array = IntArray(MATRIX_WIDTH * MATRIX_HEIGHT)
         for (y in 0 until MATRIX_HEIGHT) {
             for (x in 0 until MATRIX_WIDTH) {
-                array[y * MATRIX_WIDTH + x] = if (matrix[y][x]) 4095 else 0
+                array[y * MATRIX_WIDTH + x] = if (matrix[y][x]) MAX_BRIGHTNESS else 0
             }
         }
         return array
