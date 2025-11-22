@@ -19,6 +19,10 @@ release/
 .gradle/
 build/
 
+# Note: gradle-wrapper.jar is intentionally excluded
+# It will be auto-generated when you open the project in Android Studio
+!gradle/wrapper/gradle-wrapper.jar
+
 # Local configuration file (sdk path, etc)
 local.properties
 
