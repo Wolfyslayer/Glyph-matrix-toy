@@ -9,7 +9,6 @@ on:
       - main
   workflow_dispatch:
 
-# Ensure only one build runs at a time per branch
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -41,6 +40,21 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
+
+      # Ensures debug keystore is always present in CI for debug builds
+      - name: Generate debug keystore (for debug builds)
+        run: |
+          mkdir -p ~/.android
+          keytool -genkey -v -keystore ~/.android/debug.keystore -alias androiddebugkey \
+            -storepass android -keypass android -dname "CN=Android Debug,O=Android,C=US" \
+            -keyalg RSA -keysize 2048 -validity 10000
+
+      # Optional: Gradle properties cache workaround if you have gradle.properties custom path
+      #- name: Cache gradle.properties
+      #  uses: actions/cache@v3
+      #  with:
+      #    path: |
+      #      ~/.gradle/gradle.properties
 
       - name: Build debug APK
         env:
