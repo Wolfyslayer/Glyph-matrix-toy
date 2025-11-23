@@ -84,8 +84,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
     
     // Nothing Glyph SDK - using local AAR file from libs directory
-    // Using fileTree to include glyph-matrix-sdk-1.0.aar (and any future local dependencies)
-    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    // flatDir repository is configured in settings.gradle
+    implementation(name: 'glyph-matrix-sdk-1.0', ext: 'aar')
     
     // Testing
     testImplementation 'junit:junit:4.13.2'
