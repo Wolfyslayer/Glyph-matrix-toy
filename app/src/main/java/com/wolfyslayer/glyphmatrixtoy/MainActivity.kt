@@ -159,17 +159,17 @@ class MainActivity : AppCompatActivity() {
                 val glyphFrameBuilderGetter = gm.javaClass.getMethod("getGlyphFrameBuilder")
                 val builder = glyphFrameBuilderGetter.invoke(gm)
                 
-                if (builder != null) {
-                    val builderClass = builder.javaClass
+                builder?.let { b ->
+                    val builderClass = b.javaClass
                     val buildChannelAMethod = builderClass.getMethod("buildChannelA")
                     val buildPeriodMethod = builderClass.getMethod("buildPeriod", Int::class.java)
                     val buildCyclesMethod = builderClass.getMethod("buildCycles", Int::class.java)
                     val buildMethod = builderClass.getMethod("build")
                     
-                    buildChannelAMethod.invoke(builder)
-                    buildPeriodMethod.invoke(builder, 1000)
-                    buildCyclesMethod.invoke(builder, 1)
-                    val frame = buildMethod.invoke(builder)
+                    buildChannelAMethod.invoke(b)
+                    buildPeriodMethod.invoke(b, 1000)
+                    buildCyclesMethod.invoke(b, 1)
+                    val frame = buildMethod.invoke(b)
                     
                     // Try to display the blank frame
                     frame?.let { invokeGlyphMethod(listOf("displayGlyphFrame", "display", "sendFrame", "showFrame"), it) }
@@ -199,19 +199,19 @@ class MainActivity : AppCompatActivity() {
                 val glyphFrameBuilderGetter = gm.javaClass.getMethod("getGlyphFrameBuilder")
                 val builder = glyphFrameBuilderGetter.invoke(gm)
                 
-                if (builder != null) {
-                    val builderClass = builder.javaClass
+                builder?.let { b ->
+                    val builderClass = b.javaClass
                     val buildChannelAMethod = builderClass.getMethod("buildChannelA")
                     val buildChannelMethod = builderClass.getMethod("buildChannel", IntArray::class.java)
                     val buildPeriodMethod = builderClass.getMethod("buildPeriod", Int::class.java)
                     val buildCyclesMethod = builderClass.getMethod("buildCycles", Int::class.java)
                     val buildMethod = builderClass.getMethod("build")
                     
-                    buildChannelAMethod.invoke(builder)
-                    buildChannelMethod.invoke(builder, frameData)
-                    buildPeriodMethod.invoke(builder, 1000)
-                    buildCyclesMethod.invoke(builder, 1)
-                    val frame = buildMethod.invoke(builder)
+                    buildChannelAMethod.invoke(b)
+                    buildChannelMethod.invoke(b, frameData)
+                    buildPeriodMethod.invoke(b, 1000)
+                    buildCyclesMethod.invoke(b, 1)
+                    val frame = buildMethod.invoke(b)
                     
                     // Use reflection to display the frame
                     frame?.let { invokeGlyphMethod(listOf("displayGlyphFrame", "display", "sendFrame", "showFrame"), it) }
