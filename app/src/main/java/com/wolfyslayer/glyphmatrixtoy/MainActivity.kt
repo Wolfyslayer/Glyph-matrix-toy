@@ -172,9 +172,7 @@ class MainActivity : AppCompatActivity() {
                     val frame = buildMethod.invoke(builder)
                     
                     // Try to display the blank frame
-                    if (frame != null) {
-                        invokeGlyphMethod(listOf("displayGlyphFrame", "display", "sendFrame", "showFrame"), frame)
-                    }
+                    frame?.let { invokeGlyphMethod(listOf("displayGlyphFrame", "display", "sendFrame", "showFrame"), it) }
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "Error clearing display", e)
@@ -216,9 +214,7 @@ class MainActivity : AppCompatActivity() {
                     val frame = buildMethod.invoke(builder)
                     
                     // Use reflection to display the frame
-                    if (frame != null) {
-                        invokeGlyphMethod(listOf("displayGlyphFrame", "display", "sendFrame", "showFrame"), frame)
-                    }
+                    frame?.let { invokeGlyphMethod(listOf("displayGlyphFrame", "display", "sendFrame", "showFrame"), it) }
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "Error displaying frame", e)
