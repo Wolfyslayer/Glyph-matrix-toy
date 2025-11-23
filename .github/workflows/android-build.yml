@@ -31,7 +31,6 @@ jobs:
 
       - name: Build debug APK
         run: ./gradlew assembleDebug
-        working-directory: ${{ github.workspace }}
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
