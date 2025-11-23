@@ -6,7 +6,6 @@ import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.nothing.ketchum.GlyphException
 import com.nothing.ketchum.GlyphManager
 import com.wolfyslayer.glyphmatrixtoy.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
@@ -79,7 +78,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-        } catch (e: GlyphException) {
+        } catch (e: Exception) {
+            // Catch generic Exception for broader compatibility
+            // GlyphException is available in the SDK but catching Exception is more robust
             Log.e(TAG, "Glyph not supported", e)
             showError(getString(R.string.error_glyph_not_supported))
         }
@@ -118,7 +119,7 @@ class MainActivity : AppCompatActivity() {
         handler.removeCallbacks(updateRunnable)
         
         // Turn off all LEDs
-        glyphManager?.let { gm ->
+        glyphManager?.let { gm: GlyphManager ->
             try {
                 val frame = gm.glyphFrameBuilder
                     .buildChannelA()
@@ -145,7 +146,7 @@ class MainActivity : AppCompatActivity() {
         val matrix = matrixRenderer.render(currentBatteryLevel, isCharging, isFull)
         val frameData = matrixRenderer.matrixToArray(matrix)
         
-        glyphManager?.let { gm ->
+        glyphManager?.let { gm: GlyphManager ->
             try {
                 // Create a frame with the matrix data
                 val frame = gm.glyphFrameBuilder
