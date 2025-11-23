@@ -3,6 +3,9 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven { url = uri("https://maven.google.com") }
+        maven { url = uri("https://maven.aliyun.com/repository/google") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
     }
 }
 
@@ -15,7 +18,6 @@ dependencyResolutionManagement {
         flatDir {
             dirs 'app/libs'
         }
-        // Nothing Glyph Developer Kit on GitHub Packages
         maven {
             url = uri("https://maven.pkg.github.com/Nothing-Developer-Programme/Glyph-Developer-Kit")
             credentials {
@@ -23,6 +25,9 @@ dependencyResolutionManagement {
                 password = providers.environmentVariable("GITHUB_TOKEN").getOrElse("")
             }
         }
+        maven { url = uri("https://maven.google.com") }
+        maven { url = uri("https://maven.aliyun.com/repository/google") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
     }
 }
 
