@@ -25,15 +25,16 @@ This document describes the build configuration for the Glyph Matrix Toy Android
 
 ### Target SDK Levels
 
-- **minSdkVersion**: 34 (Android 14)
-  - Required for Nothing Phone 3 Glyph SDK compatibility
-  - Supports latest Android APIs
+- **minSdkVersion**: 33 (Android 13)
+  - Supports Nothing Phone 3 on Android 13 and higher
+  - Uses manifest merger to override Glyph SDK's minSdk requirement
+  - Compatible with Android 13, 14, 15, and 16
   
-- **targetSdkVersion**: 34 (Android 14)
-  - Latest stable Android version
+- **targetSdkVersion**: 35 (Android 15)
+  - Targets latest stable Android version
   - Ensures app follows modern Android best practices
   
-- **compileSdkVersion**: 34 (Android 14)
+- **compileSdkVersion**: 35 (Android 15)
   - Compiles against latest Android APIs
 
 ### Java Version
@@ -287,8 +288,9 @@ All builds upload artifacts with different retention periods:
 - AGP: 8.1.4
 - Kotlin: 1.9.20
 - JDK Target: 17
-- Min SDK: 34
-- Target SDK: 34
+- Min SDK: 33
+- Target SDK: 35
+- Compile SDK: 35
 
 ## Resources
 
