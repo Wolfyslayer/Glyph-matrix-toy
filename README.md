@@ -15,7 +15,9 @@ An Android app for Nothing Phone 3 that displays real-time clock and battery sta
 - Nothing Phone 3 with Glyph Matrix interface
 - Android SDK 31 (Android 12) or higher
 - Android Studio Hedgehog (2023.1.1) or newer
-- Kotlin 1.9.0+
+- JDK 17 or higher
+- Kotlin 1.9.20+
+- Gradle 8.4+
 
 ## Project Structure
 
@@ -51,7 +53,18 @@ GlyphMatrixToy/
 
 1. Install [Android Studio](https://developer.android.com/studio)
 2. Install Android SDK with minimum API level 31
-3. Install Kotlin plugin (usually bundled with Android Studio)
+3. Install JDK 17 or higher
+4. Install Kotlin plugin (usually bundled with Android Studio)
+
+### CI/CD
+
+This project includes a GitHub Actions workflow that automatically builds the app on every push to main and on pull requests. The workflow:
+- Validates the Gradle wrapper
+- Builds both debug and release APKs
+- Runs lint checks
+- Uploads build artifacts for download
+
+You can download the latest build artifacts from the [Actions tab](https://github.com/Wolfyslayer/Glyph-matrix-toy/actions) in GitHub.
 
 ### Steps
 
@@ -131,10 +144,22 @@ These are requested automatically on first run.
 
 ### Dependencies
 
-- **Nothing Glyph SDK** (com.nothing.ketchum:library:2.0.8): Official SDK for Glyph control
-- **AndroidX Core KTX**: Kotlin extensions for Android
-- **Material Components**: UI components
-- **ConstraintLayout**: Layout management
+- **Nothing Glyph SDK** (local AAR in libs/): Official SDK for Glyph control
+- **AndroidX Core KTX** (1.12.0): Kotlin extensions for Android
+- **AndroidX AppCompat** (1.6.1): Backward-compatible Android APIs
+- **Material Components** (1.11.0): Material Design UI components
+- **ConstraintLayout** (2.1.4): Flexible layout management
+- **Lifecycle Runtime KTX** (2.7.0): Lifecycle-aware components
+
+### Build Configuration
+
+- **Android Gradle Plugin**: 8.1.4
+- **Kotlin**: 1.9.20
+- **Gradle**: 8.4
+- **Java Target**: 17
+- **Min SDK**: 31 (Android 12)
+- **Target SDK**: 34 (Android 14)
+- **Compile SDK**: 34
 
 ### Architecture
 
@@ -213,9 +238,14 @@ Contributions are welcome! Please feel free to:
 - Check logcat in Android Studio for error messages
 - Ensure the Glyph SDK version is compatible with your device
 
+## Documentation
+
+- **[BUILD.md](BUILD.md)**: Detailed build configuration and CI/CD documentation
+- **[LICENSE](LICENSE)**: MIT License
+
 ## License
 
-This project is open source and available for anyone to use, modify, and distribute.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 

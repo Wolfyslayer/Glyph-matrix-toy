@@ -33,7 +33,13 @@ class BatteryMonitor(private val context: Context) {
         this.listener = listener
         if (!isRegistered) {
             val filter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-            context.registerReceiver(batteryReceiver, filter)
+            // For API 33+ (TIRAMISU), we need to specify RECEIVER_NOT_EXPORTED
+            // since ACTION_BATTERY_CHANGED is a system broadcast
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                context.registerReceiver(batteryReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
+            } else {
+                context.registerReceiver(batteryReceiver, filter)
+            }
             isRegistered = true
         }
         
