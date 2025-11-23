@@ -79,6 +79,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         } catch (e: Exception) {
+            // Catch generic Exception for broader compatibility
+            // GlyphException is available in the SDK but catching Exception is more robust
             Log.e(TAG, "Glyph not supported", e)
             showError(getString(R.string.error_glyph_not_supported))
         }

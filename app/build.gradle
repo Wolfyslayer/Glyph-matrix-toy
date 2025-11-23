@@ -47,7 +47,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.10.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     
-    // Nothing Glyph SDK - using local AAR file
+    // Nothing Glyph SDK - using local AAR file from libs directory
+    // Using fileTree to include glyph-matrix-sdk-1.0.aar (and any future local dependencies)
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     
     testImplementation 'junit:junit:4.13.2'
