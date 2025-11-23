@@ -13,7 +13,7 @@ An Android app for Nothing Phone 3 that displays real-time clock and battery sta
 ## Requirements
 
 - Nothing Phone 3 with Glyph Matrix interface
-- Android SDK 31 (Android 12) or higher
+- Android SDK 34 (Android 14) or higher
 - Android Studio Hedgehog (2023.1.1) or newer
 - JDK 17 or higher
 - Kotlin 1.9.20+
@@ -52,7 +52,7 @@ GlyphMatrixToy/
 ### Prerequisites
 
 1. Install [Android Studio](https://developer.android.com/studio)
-2. Install Android SDK with minimum API level 31
+2. Install Android SDK with minimum API level 34
 3. Install JDK 17 or higher
 4. Install Kotlin plugin (usually bundled with Android Studio)
 
@@ -157,7 +157,7 @@ These are requested automatically on first run.
 - **Kotlin**: 1.9.20
 - **Gradle**: 8.4
 - **Java Target**: 17
-- **Min SDK**: 31 (Android 12)
+- **Min SDK**: 34 (Android 14)
 - **Target SDK**: 34 (Android 14)
 - **Compile SDK**: 34
 
@@ -234,7 +234,7 @@ Contributions are welcome! Please feel free to:
 - Ensure your Nothing Phone firmware is up to date
 
 ### App crashes on start
-- Verify you're running Android 12 (API 31) or higher
+- Verify you're running Android 14 (API 34) or higher
 - Check logcat in Android Studio for error messages
 - Ensure the Glyph SDK version is compatible with your device
 

@@ -3,9 +3,12 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        // Fallback mirrors for reliability in CI
         maven { url = uri("https://maven.google.com") }
         maven { url = uri("https://maven.aliyun.com/repository/google") }
         maven { url = uri("https://maven.aliyun.com/repository/public") }
+        maven { url = uri("https://maven.aliyun.com/repository/central") }
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
     }
 }
 
@@ -25,9 +28,11 @@ dependencyResolutionManagement {
                 password = providers.environmentVariable("GITHUB_TOKEN").getOrElse("")
             }
         }
+        // Fallback mirrors for reliability in CI
         maven { url = uri("https://maven.google.com") }
         maven { url = uri("https://maven.aliyun.com/repository/google") }
         maven { url = uri("https://maven.aliyun.com/repository/public") }
+        maven { url = uri("https://maven.aliyun.com/repository/central") }
     }
 }
 

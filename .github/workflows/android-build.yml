@@ -20,6 +20,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    strategy:
+      fail-fast: true
 
     steps:
       - name: Checkout code
@@ -45,38 +47,39 @@ jobs:
       - name: Generate debug keystore (for debug builds)
         run: |
           mkdir -p ~/.android
-          keytool -genkey -v -keystore ~/.android/debug.keystore -alias androiddebugkey \
-            -storepass android -keypass android -dname "CN=Android Debug,O=Android,C=US" \
-            -keyalg RSA -keysize 2048 -validity 10000
-
-      # Optional: Gradle properties cache workaround if you have gradle.properties custom path
-      #- name: Cache gradle.properties
-      #  uses: actions/cache@v3
-      #  with:
-      #    path: |
-      #      ~/.gradle/gradle.properties
+          if [ ! -f ~/.android/debug.keystore ]; then
+            keytool -genkey -v -keystore ~/.android/debug.keystore -alias androiddebugkey \
+              -storepass android -keypass android -dname "CN=Android Debug,O=Android,C=US" \
+              -keyalg RSA -keysize 2048 -validity 10000
+          fi
 
       - name: Build debug APK
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew assembleDebug --stacktrace --info
+        run: |
+          set -e
+          ./gradlew assembleDebug --stacktrace --info
 
       - name: Build release APK
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew assembleRelease --stacktrace
+        run: |
+          set -e
+          ./gradlew assembleRelease --stacktrace
 
       - name: Run lint checks
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew lintDebug --stacktrace
+        run: |
+          set -e
+          ./gradlew lintDebug --stacktrace
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
-        if: success() || failure()
+        if: success()
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug/*.apk
@@ -85,7 +88,7 @@ jobs:
 
       - name: Upload release APK
         uses: actions/upload-artifact@v4
-        if: success() || failure()
+        if: success()
         with:
           name: release-apk
           path: app/build/outputs/apk/release/*.apk
@@ -94,7 +97,7 @@ jobs:
 
       - name: Upload lint results
         uses: actions/upload-artifact@v4
-        if: success() || failure()
+        if: always()
         with:
           name: lint-results
           path: app/build/reports/lint-results-*.html
