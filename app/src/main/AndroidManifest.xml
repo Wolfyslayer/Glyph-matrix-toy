@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Override minSdkVersion from Glyph SDK to support Android 13 (API 33) -->
+    <uses-sdk tools:overrideLibrary="com.nothing.ketchum" />
+
     <!-- Permissions for Glyph SDK -->
     <uses-permission android:name="com.nothing.ketchum.permission.LIGHT_GLYPH" />
     
