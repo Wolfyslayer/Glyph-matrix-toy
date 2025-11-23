@@ -13,7 +13,7 @@ An Android app for Nothing Phone 3 that displays real-time clock and battery sta
 ## Requirements
 
 - Nothing Phone 3 with Glyph Matrix interface
-- Android 13 (API 33) or higher (including Android 14, 15, 16)
+- Android 13 (API 33) or higher
 - Android Studio Hedgehog (2023.1.1) or newer
 - JDK 17 or higher
 - Kotlin 1.9.20+
