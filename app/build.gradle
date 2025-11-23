@@ -35,18 +35,20 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.10.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     
-    // Nothing Glyph SDK
-    // The original dependency com.nothing.ketchum:library:2.0.8 could not be resolved on CI.
-    // Commented out to allow builds to succeed. If you need the Nothing SDK, add the
-    // repository hosting the artifact to the top-level build.gradle (allprojects.repositories) or
-    // restore this line and set a project property to include it on CI.
-    // implementation 'com.nothing.ketchum:library:2.0.8'
+    // Nothing Glyph SDK - using local AAR file
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
